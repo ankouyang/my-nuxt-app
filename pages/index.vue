@@ -2,29 +2,9 @@
   <div class="container">
     <div>
       <Logo />
-<!--      <h1 class="title">-->
-<!--        myFirstSsrProject-->
-<!--      </h1>-->
-<!--      <div class="links">-->
-<!--        <a-->
-<!--          href="https://nuxtjs.org/"-->
-<!--          target="_blank"-->
-<!--          rel="noopener noreferrer"-->
-<!--          class="button&#45;&#45;green"-->
-<!--        >-->
-<!--          Documentation-->
-<!--        </a>-->
-<!--        <a-->
-<!--          href="https://github.com/nuxt/nuxt.js"-->
-<!--          target="_blank"-->
-<!--          rel="noopener noreferrer"-->
-<!--          class="button&#45;&#45;grey"-->
-<!--        >-->
-<!--          GitHub-->
-<!--        </a>-->
-<!--      </div>-->
-      <nuxt-link to="/test">去test</nuxt-link>
-      <a href="/text">去text</a>
+      <nuxt-link to="/user/2">user2</nuxt-link>
+      <a href="/user/3">user3</a>
+      <li v-for="(item,index) in data.lists" :key="index"> {{item.name}}</li>
     </div>
   </div>
 </template>
@@ -32,13 +12,16 @@
 <script>
 import axios from 'axios'
 export default {
-  created() {
-    console.log(process.env.NODE_ENV);
-    console.log(process.env.API_ENV);
-    // axios.get('/api').then(res=>{
-    //   console.log(res);
-    // })
-  }
+  //这个是不走http客户端得请求
+  async asyncData(context){
+    const { data } = await axios.get(`http://localhost:8888/api`)
+    console.log(context);
+    return  data
+  },
+  // async created(){
+  //   const { data } = await axios.get(`/api`)
+  //   console.log(data);
+  // }
 }
 </script>
 

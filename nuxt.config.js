@@ -1,3 +1,5 @@
+import base from "ant-design-vue/lib/base";
+
 export default {
   env: {
     //服务端和客户端共享环境变量
@@ -5,6 +7,16 @@ export default {
     API_ENV: process.env.API_ENV|| '/dev'
   },
   // Global page headers: https://go.nuxtjs.dev/config-head
+  router:{
+    base:'/',
+    extendRoutes(routes,resolve){
+      routes.push({
+        path:'/hello',
+        name:'hello',
+        component:resolve(__dirname,'pages/user.vue')
+      })
+    },
+  },
   head: {
     title: ' 我的ssr项目',
     htmlAttrs: {
@@ -51,7 +63,8 @@ export default {
   },
   proxy: {
     '/api': {
-      target: 'https://2c645ebb-0510-4df5-b5c3-2b6b7e3f512d.mock.pstmn.io',
+      target: 'http://localhost:8888',
+      changeOrigin: true
     }
   },
   server: {
