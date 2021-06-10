@@ -52,14 +52,7 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: ['@nuxtjs/axios', "@nuxtjs/proxy"],
   axios: {
-    retry: { retries: 3 },
-    //开发模式下开启debug
-    debug: process.env.NODE_ENV == "production" ? false : true,
-    //设置不同环境的请求地址
-    baseURL: process.env.NODE_ENV == "production" ? "" : "",
-    withCredentials: true,
-    headers: { 'Content-Type': 'application/json', 'crossDomain': true },
-    timeout: 5000,
+    proxy: true,
   },
   proxy: {
     '/api': {

@@ -5,15 +5,14 @@
 </template>
 
 <script>
-    import axios from "axios";
-
+   import axios from 'axios'
     export default {
         name: "id",
-        async asyncData(context,store){
-          const { data } = await axios.get(`http://localhost:8888/api`)
-          console.log(context.params);
-          console.log(store.state);
-          return  data
+        async asyncData({app}){
+          const {data} = await app.$axios.get('http://localhost:8888/api')
+          if (data.code === 200) {
+            return data
+          }
         },
         created() {
           console.log(this.$route.params.orderId);

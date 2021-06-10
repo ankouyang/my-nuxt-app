@@ -18,7 +18,8 @@
     "core-js": "^3.9.1",
     "cross-env": "^7.0.3",
     "express": "^4.17.1",
-    "nuxt": "^2.15.3"
+    "nuxt": "^2.15.3",
+    "vue": "latest"
   },
   "devDependencies": {}
 }

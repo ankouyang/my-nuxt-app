@@ -14,8 +14,8 @@ import axios from 'axios'
 export default {
   //这个是不走http客户端得请求
   async asyncData(context){
-    const { data } = await axios.get(`http://localhost:8888/api`)
-    console.log(context);
+    const { data } = await context.$axios.get(``)
+    console.log(context.$config);
     return  data
   },
   // async created(){
