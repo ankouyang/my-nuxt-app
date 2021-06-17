@@ -4,24 +4,19 @@
       <Logo />
       <nuxt-link to="/user/2">user2</nuxt-link>
       <a href="/user/3">user3</a>
-      <li v-for="(item,index) in data.lists" :key="index"> {{item.name}}</li>
+      <li v-for="(item,index) in lists" :key="index"> {{item.name}}</li>
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
+import {getUserinfo} from '../request/apis/user'
 export default {
   //这个是不走http客户端得请求
-  async asyncData(context){
-    const { data } = await context.$axios.get(``)
-    console.log(context.$config);
-    return  data
+  async asyncData(){
+    const {lists} = await getUserinfo()
+    return  {lists}
   },
-  // async created(){
-  //   const { data } = await axios.get(`/api`)
-  //   console.log(data);
-  // }
 }
 </script>
 

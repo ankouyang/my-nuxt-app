@@ -5,15 +5,13 @@
 </template>
 
 <script>
-   import axios from 'axios'
+    import {getUserinfo} from "../../request/apis/user";
     export default {
         name: "id",
-        async asyncData({app}){
-          const {data} = await app.$axios.get('http://localhost:8888/api')
-          if (data.code === 200) {
-            return data
-          }
-        },
+        async asyncData(){
+         const {lists} = await getUserinfo()
+         return  {lists}
+       },
         created() {
           console.log(this.$route.params.orderId);
         }

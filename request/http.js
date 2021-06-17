@@ -37,7 +37,7 @@ ajax.interceptors.response.use(
         }
       }
       if (response.data.code === 200) {
-        return response.data.data
+        return Promise.resolve(response.data.data)
       } else {
         Vue.prototype.$message.error(response.data.message)
         return Promise.reject(response.data)

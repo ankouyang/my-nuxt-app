@@ -20,6 +20,5 @@
     "express": "^4.17.1",
     "nuxt": "^2.15.3",
     "vue": "latest"
-  },
-  "devDependencies": {}
+  }
 }
